@@ -10,4 +10,5 @@ class CarSerializer(serializers.Serializer):
     problem_description = serializers.CharField(
         required=False,
         allow_null=True,
+        allow_blank=True,
     )
