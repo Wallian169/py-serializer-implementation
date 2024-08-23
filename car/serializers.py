@@ -11,11 +11,3 @@ class CarSerializer(serializers.Serializer):
         allow_null=True,
         required=False
     )
-
-    def validate(self, data):
-        if not data.get("is_broken") and data.get("problem_description"):
-            raise serializers.ValidationError(
-                "Cannot provide a problem description "
-                "if the car is not broken."
-            )
-        return data
