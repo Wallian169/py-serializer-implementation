@@ -6,10 +6,13 @@ class CarSerializer(serializers.Serializer):
     model = serializers.CharField(max_length=64)
     horse_powers = serializers.IntegerField(min_value=0)
     is_broken = serializers.BooleanField()
-    problem_description = serializers.CharField(allow_null=True, required=False)
+    problem_description = serializers.CharField(
+        allow_null=True, 
+        required=False
+    )
 
     def validate(self, data):
-        if not data.get('is_broken') and data.get('problem_description'):
+        if not data.get("is_broken") and data.get("problem_description"):
             raise serializers.ValidationError(
                 "Cannot provide a problem description "
                 "if the car is not broken."
