@@ -15,7 +15,6 @@ def deserialize_car_object(car_json):
     stream = BytesIO(car_json)
     data = JSONParser().parse(stream)
     serializer = CarSerializer(data=data)
-    if serializer.is_valid():
-        return Car(**serializer.validated_data)
-    else:
-        raise ValueError(f"Invalid data: {serializer.errors}")
+    serializer.is_valid(raise_exception=True)
+    car = serializer.save()
+    return car
