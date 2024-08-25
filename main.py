@@ -1,7 +1,6 @@
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from io import BytesIO
-from car.models import Car
 from car.serializers import CarSerializer
 
 
